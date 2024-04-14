@@ -14,15 +14,17 @@ export class AuthService {
 
   async login(authLoginDto: AuthLoginDto) {
     const user = await this.validateUser(authLoginDto);
-    const { email } = user;
+    const { id, email } = user;
     const payload = {
       userId: user.id,
       email: user.email,
     };
     console.log(user);
+    console.log(this.jwtService.sign(payload));
     return {
       access_token: this.jwtService.sign(payload),
       user: {
+        id,
         email,
       },
     };
@@ -37,6 +39,15 @@ export class AuthService {
     }
 
     return user;
+  }
+
+  async getUserIdFromToken(token: string): Promise<number | null> {
+    try {
+      const { id } = this.jwtService.decode(token) as { id: number };
+      return id;
+    } catch (error) {
+      return null;
+    }
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

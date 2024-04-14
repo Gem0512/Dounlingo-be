@@ -20,25 +20,25 @@ export class PronounceService {
     return await Pronounce.find();
   }
 
-  async markAsDone(id: number): Promise<Pronounce | undefined> {
-    try {
-      const pronounce = await this.pronounceRepository.findOne({
-        where: {
-          id: id,
-        },
-      });
-      if (!pronounce) {
-        return undefined; // Trả về undefined nếu không tìm thấy bản ghi với id đã cung cấp
-      }
-      pronounce.done = 'true'; // Đặt trường done thành true
-      await this.pronounceRepository.save(pronounce); // Lưu thay đổi vào cơ sở dữ liệu
+  // async markAsDone(id: number): Promise<Pronounce | undefined> {
+  //   try {
+  //     const pronounce = await this.pronounceRepository.findOne({
+  //       where: {
+  //         id: id,
+  //       },
+  //     });
+  //     if (!pronounce) {
+  //       return undefined; // Trả về undefined nếu không tìm thấy bản ghi với id đã cung cấp
+  //     }
+  //     pronounce.done = 'true'; // Đặt trường done thành true
+  //     await this.pronounceRepository.save(pronounce); // Lưu thay đổi vào cơ sở dữ liệu
 
-      return pronounce; // Trả về bản ghi đã được cập nhật
-    } catch (error) {
-      console.error('Error occurred while marking as done:', error);
-      throw error;
-    }
-  }
+  //     return pronounce; // Trả về bản ghi đã được cập nhật
+  //   } catch (error) {
+  //     console.error('Error occurred while marking as done:', error);
+  //     throw error;
+  //   }
+  // }
 
   findOne(id: number) {
     return `This action returns a #${id} pronounce`;

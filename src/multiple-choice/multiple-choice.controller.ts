@@ -53,7 +53,7 @@ export class MultipleChoiceController {
     const updatedMultipleChoice =
       await this.multipleChoiceService.markAsDone(parsedId);
     if (!updatedMultipleChoice) {
-      return { message: 'Multiple choice not found' }; // Trả về thông báo nếu không tìm thấy bản ghi
+      return { message: 'Multiple choice not found' };
     }
     return updatedMultipleChoice;
   }

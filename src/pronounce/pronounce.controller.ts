@@ -28,16 +28,16 @@ export class PronounceController {
     return this.pronounceService.findAll();
   }
 
-  @UseGuards(JwtAuthGuard)
-  @Patch(':id/mark-as-done')
-  async markAsDone(@Param('id') id: string) {
-    const parsedId = parseInt(id, 10);
-    const updatedPronounce = await this.pronounceService.markAsDone(parsedId);
-    if (!updatedPronounce) {
-      return { message: 'Multiple choice not found' }; // Trả về thông báo nếu không tìm thấy bản ghi
-    }
-    return updatedPronounce;
-  }
+  // @UseGuards(JwtAuthGuard)
+  // @Patch(':id/mark-as-done')
+  // async markAsDone(@Param('id') id: string) {
+  //   const parsedId = parseInt(id, 10);
+  //   const updatedPronounce = await this.pronounceService.markAsDone(parsedId);
+  //   if (!updatedPronounce) {
+  //     return { message: 'Multiple choice not found' }; // Trả về thông báo nếu không tìm thấy bản ghi
+  //   }
+  //   return updatedPronounce;
+  // }
 
   @Get(':id')
   findOne(@Param('id') id: string) {

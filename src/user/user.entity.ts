@@ -21,10 +21,13 @@ export class User extends BaseEntity {
   @Column()
   password: string;
 
-  @Column()
+  @Column({ default: null })
   dailyGoal: string;
 
-  @Column({ type: 'json' })
+  @Column({ default: null })
+  language: string;
+
+  @Column({ type: 'json', default: null })
   result: { [key: string]: any[] };
 
   @Column()

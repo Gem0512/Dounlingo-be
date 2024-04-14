@@ -20,7 +20,7 @@ export class AuthController {
 
   @Post('user/login')
   async login(@Body() authLoginDto: AuthLoginDto) {
-    // console.log(this.authService.login(authLoginDto));
+    console.log('////');
     return this.authService.login(authLoginDto);
   }
 

@@ -90,7 +90,20 @@ export class UserController {
     @Param('userId') userId: string,
     @Body('dailyGoal') dailyGoal: string,
   ) {
+    console.log('dailyGoal');
+    console.log(dailyGoal);
     return this.usersService.updateDailyGoal(parseInt(userId), dailyGoal);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put(':userId/language')
+  async updateLanguage(
+    @Param('userId') userId: string,
+    @Body('language') language: string,
+  ) {
+    console.log('language');
+    console.log(language);
+    return this.usersService.updateLanguage(parseInt(userId), language);
   }
 
   // @Put(':id/result')

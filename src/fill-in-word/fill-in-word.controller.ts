@@ -22,7 +22,7 @@ export class FillInWordController {
     return this.fillInWordService.create(createFillInWordDto);
   }
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get()
   findAll() {
     return this.fillInWordService.findAll();
@@ -69,6 +69,10 @@ export class FillInWordController {
     },
   ) {
     const listening = await this.fillInWordService.createFillInWord(body);
+    if (listening) {
+      console.log('Post fill in word success!');
+      console.log(listening);
+    }
     return listening;
   }
 

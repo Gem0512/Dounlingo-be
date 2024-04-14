@@ -46,6 +46,19 @@ export class UserService {
     return this.userRepository.save(user);
   }
 
+  async updateLanguage(userId: number, language: string): Promise<User> {
+    const user = await this.userRepository.findOne({
+      where: {
+        id: userId,
+      },
+    }); // Sửa dòng này
+    if (!user) {
+      throw new Error('User not found');
+    }
+    user.language = language; // Gán giá trị chuỗi cho trường dailyGoal
+    return this.userRepository.save(user);
+  }
+
   // async updateResult(
   //   userId: number,
   //   result: { [key: string]: any[] },
@@ -87,6 +100,7 @@ export class UserService {
 
     // Thêm giá trị mới vào mảng
     user.result[key].push(...value);
+    console.log(user);
 
     return this.userRepository.save(user);
   }
